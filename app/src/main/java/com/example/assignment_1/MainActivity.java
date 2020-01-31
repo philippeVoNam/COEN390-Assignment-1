@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void goToShowGradeActivity() {
-        Intent intent = new Intent(MainActivity.this, ShowGradeActivity.class); // what is Intent ? -> signals and slots from QT
+        Intent intent = new Intent(MainActivity.this, CoursesActivity.class); // what is Intent ? -> signals and slots from QT
         startActivity(intent);
     }
 }

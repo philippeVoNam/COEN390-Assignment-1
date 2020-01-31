@@ -1,4 +1,9 @@
 package com.example.assignment_1;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.widget.TextView;
+
 import java.lang.Math;
 
 public class ProfileController {

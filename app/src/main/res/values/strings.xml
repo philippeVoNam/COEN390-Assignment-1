@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Assignment-1</string>
+    <string name="profileKey">profileKey</string>
+    <string name="profileName">name</string>
+    <string name="profileAge">age</string>
+    <string name="profileStudentID">studentID</string>
 </resources>

@@ -28,5 +28,4 @@ public class Profile {
     public int getStudentID() {
         return studentID; // should it be this.name ?
     }
-
 }

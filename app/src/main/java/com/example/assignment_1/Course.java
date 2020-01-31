@@ -2,6 +2,10 @@ package com.example.assignment_1;
 
 import java.util.List;
 
+/*
+Class Course :
+- class to represent the Courses
+*/
 public class Course {
 
     // Variables

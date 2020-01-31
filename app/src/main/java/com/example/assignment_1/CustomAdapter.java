@@ -12,6 +12,11 @@ import android.widget.TextView;
 import java.util.List;
 import java.util.zip.Inflater;
 
+/*
+Class CustomAdapter:
+- class to contain the data to be displayed in the "CourseActivity" window
+- data such as : course title -> assignments titles -> assignments grades -> course average grade
+*/
 public class CustomAdapter extends BaseAdapter {
     Context context;
     List<Course> courses;
@@ -46,39 +51,43 @@ public class CustomAdapter extends BaseAdapter {
         view = inflter.inflate(R.layout.multiline_text_view, null);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.linearLayout);
 
-            TextView courseName = new TextView(context);
-            courseName.setText(courses.get(i).getTitle());
-            layout.addView(courseName);
+        // Set Course Title
+        TextView courseName = new TextView(context);
+        courseName.setText(courses.get(i).getTitle());
+        layout.addView(courseName);
 
-            AssignmentController assignmentController = new AssignmentController();
+        AssignmentController assignmentController = new AssignmentController();
 
-            for(Assignment assignment : courses.get(i).getAssignmets()){
+        // Set Assignment title and Grades
+        for(Assignment assignment : courses.get(i).getAssignmets()){
 
-                TextView assignmentIDandGrade = new TextView(context);
-                if(this.mode == "number"){
-                    assignmentIDandGrade.setText(assignment.getIDStr() + " " + assignment.getGradeStr());
-                }
-                else{
-                    assignmentIDandGrade.setText(assignment.getIDStr() + " Grade : " + assignmentController.convert_grade_to_character(assignment.getGrade()));
-                }
-//                TextView assignmentGrade = new TextView(context);
-//                assignmentGrade.setText(assignment.getGradeStr());
-
-                layout.addView(assignmentIDandGrade);
-//                layout.addView(assignmentGrade);
-            }
-
-            CourseController controller = new CourseController();
-            int averageGrade = controller.calculate_avg_grade(courses.get(i).getAssignmets());
-
-            TextView courseGrade = new TextView(context);
-            if(this.mode == "number") {
-                courseGrade.setText("Average Grade : " + String.valueOf(averageGrade));
+            TextView assignmentIDandGrade = new TextView(context);
+            
+            // choosing between if displaying the number or letter version of the grade
+            if(this.mode == "number"){
+                assignmentIDandGrade.setText(assignment.getIDStr() + " " + assignment.getGradeStr());
             }
             else{
-                courseGrade.setText("Average Grade : " + assignmentController.convert_grade_to_character(averageGrade));
+                assignmentIDandGrade.setText(assignment.getIDStr() + " Grade : " + assignmentController.convert_grade_to_character(assignment.getGrade()));
             }
-            layout.addView(courseGrade);
+
+            layout.addView(assignmentIDandGrade);
+        }
+
+        // Set Course Average Grade
+        CourseController controller = new CourseController();
+        int averageGrade = controller.calculate_avg_grade(courses.get(i).getAssignmets());
+
+        TextView courseGrade = new TextView(context);
+
+        // choosing between if displaying the number or letter version of the grade
+        if(this.mode == "number") {
+            courseGrade.setText("Average Grade : " + String.valueOf(averageGrade));
+        }
+        else{
+            courseGrade.setText("Average Grade : " + assignmentController.convert_grade_to_character(averageGrade));
+        }
+        layout.addView(courseGrade);
 
         return view;
     }

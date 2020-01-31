@@ -1,5 +1,9 @@
 package com.example.assignment_1;
 
+/*
+Class Assignment :
+- class to represent the assignments
+*/
 public class Assignment {
     // Variables
     int id;
@@ -16,12 +20,12 @@ public class Assignment {
     // Get Methods
     public String getIDStr() {
         String idStr = "Assignment ID : " + String.valueOf(this.id);
-        return idStr; // should it be this.name ?
+        return idStr; 
     }
 
     public String getGradeStr() {
         String gradeStr = "Grade : " + String.valueOf(this.grade);
-        return gradeStr; // should it be this.name ?
+        return gradeStr; 
     }
 
     public int getGrade() { return this.grade; }

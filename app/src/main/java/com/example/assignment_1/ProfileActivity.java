@@ -16,11 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+Class ProfileActivity :
+- UI class for displaying profile name, age and studentID
+- users can either display or edit their information
+*/
 public class ProfileActivity extends AppCompatActivity {
-
-//    protected TextView nameLabel;
-//    protected TextView ageLabel;
-//    protected TextView studentidLabel;
 
     // Init UI widgets
     protected EditText nameEditText;
@@ -44,10 +45,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         // setup ui slots
         setupSlots();
-
     }
 
     protected boolean check_empty(String data) {
+        // check if the textEdit field is empty or not 
+
         if (data.matches("")) {
             Toast.makeText(this, "Some of the field are empty", Toast.LENGTH_SHORT).show();
             return true;
@@ -158,6 +160,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // implement the toolbar
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.display_menu, menu);
         return true;
@@ -165,6 +169,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // slots for the menu action items
+
         switch (item.getItemId()) {
             case R.id.display:
                 setDisplayMode();
@@ -175,11 +181,16 @@ public class ProfileActivity extends AppCompatActivity {
                 setEditMode();
                 System.out.println("edit mode");
                 return true;
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
         return true;
     }
 
     public void setDisplayMode(){
+        // set the textfiled to not editable and hides the save buttonn
         nameEditText.setEnabled(false);
         ageEditText.setEnabled(false);
         studentidEditText.setEnabled(false);
@@ -202,6 +213,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void setEditMode(){
+        // set the textfiled to  editable and shows the save buttonn
+
         nameEditText.setEnabled(true);
         ageEditText.setEnabled(true);
         studentidEditText.setEnabled(true);

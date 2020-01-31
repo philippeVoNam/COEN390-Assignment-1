@@ -1,5 +1,9 @@
 package com.example.assignment_1;
 
+/*
+Class Profile :
+- class to represent the Profile
+*/
 public class Profile {
 
     // Variables

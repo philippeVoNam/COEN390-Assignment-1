@@ -14,8 +14,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Class CoursesActivity :
+- UI class for displaying courses and assignments, along with their grades
+*/
 public class CoursesActivity extends AppCompatActivity {
 
+    // init variables
     ListView simpleList;
     List<Course> courses = new ArrayList<Course>();
 
@@ -49,8 +54,11 @@ public class CoursesActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
+
     public void init_data(){
         // init data.
+
+        // generates the courses and assignments objects 
         int max = 5;
         int min = 1;
         double numCourses = (Math.random() * ((max - min) + 1)) + min;
@@ -73,13 +81,10 @@ public class CoursesActivity extends AppCompatActivity {
             Course course = new Course(String.valueOf(i),averageGrade, assignments);
             courses.add(course);
         }
-
-        Toast toast = Toast.makeText(getApplicationContext(), "Course size : " + String.valueOf(courses.size()), Toast.LENGTH_LONG);
-        toast.show();
     }
 
     public void set_adapter(String mode){
-        // implement customAdapter
+        // implement customAdapter to insert into the listview
         simpleList = (ListView) findViewById(R.id.listView);
 
         CustomAdapter customAdapter = new CustomAdapter(CoursesActivity.this, courses, mode);
@@ -88,6 +93,7 @@ public class CoursesActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // implement the toolbar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.grade_mode_menu, menu);
         return true;
@@ -95,6 +101,8 @@ public class CoursesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // slots for the menu action items
+        
         switch (item.getItemId()) {
             case R.id.letter_grade:
                 // implement customAdapter
@@ -106,6 +114,10 @@ public class CoursesActivity extends AppCompatActivity {
                 // implement customAdapter
                 set_adapter("number");
                 System.out.println("number mode");
+                return true;
+
+            case android.R.id.home:
+                onBackPressed();
                 return true;
         }
         return true;

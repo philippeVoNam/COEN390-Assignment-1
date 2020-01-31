@@ -6,6 +6,10 @@ import android.widget.TextView;
 
 import java.lang.Math;
 
+/*
+Class ProfileController :
+- functional class to control the Profiles Class
+*/
 public class ProfileController {
 
     // Constructor
@@ -15,7 +19,7 @@ public class ProfileController {
 
     // Methods
     public boolean check_name(String name) {
-
+        // check if the name is empty and if it is composed of only alphabet characters
         System.out.println("check name");
 
         // checks if the String is null
@@ -40,7 +44,7 @@ public class ProfileController {
     }
 
     public boolean check_age(int age) {
-
+        // check it the age is a valid age
         // - cannot have : decimals, negative , 0 ...
 
         System.out.println("check age");
@@ -55,7 +59,7 @@ public class ProfileController {
     }
 
     public boolean check_studentid(int studentid) {
-
+        // check if it is a valid studentID
         // - cannot have : decimals, negative , 0 ...
 
         System.out.println("check student id");
@@ -64,8 +68,11 @@ public class ProfileController {
         double id = studentid;
         if (studentid >= 0) {
             double digits = Math.log10(id) + 1;
+            int digitsInt = (int)Math.round(digits);
 
-            if ((digits >= 1) && (digits <= 6)) {
+            System.out.println("Digits size : " + String.valueOf(digitsInt));
+
+            if ((digitsInt >= 1) && (digitsInt <= 6)) {
                 return true;
             }
             else {

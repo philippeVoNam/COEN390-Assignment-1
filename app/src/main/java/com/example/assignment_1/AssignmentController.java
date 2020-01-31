@@ -1,13 +1,17 @@
 package com.example.assignment_1;
 
+/*
+Class AssignmentController :
+- functional class to control the Assignment Class
+*/
 public class AssignmentController {
-
+    
     // Constructor
     public AssignmentController() {
-
     }
 
     public String convert_grade_to_character(int grade) {
+        // feature : convert number grade to letter grade
         if(grade <= 100 && grade >= 90) {
             return "A";
         }

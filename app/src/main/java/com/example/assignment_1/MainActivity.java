@@ -34,14 +34,12 @@ import android.widget.Button;
 //     X - cannot be a string
 //     X - cannot be empty
 
-// TODO :
-// - Save data to Shared Preferences
-// - Be able to display it
-// - display and edit mode
-// - display mode has no save button
-// - edit mode had a save button
 
-
+/*
+Class MainActivity:
+- ui class that represents the main home window of the application
+- only has two buttons that redirects user to : course window or profile window
+*/
 public class MainActivity extends AppCompatActivity {
 
 //  Init UI widgets
@@ -53,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupUI(); // Init UI
+        // Init UI
+        setupUI();
     }
 
 //  Init UI
